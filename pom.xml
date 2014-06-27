@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.galan</groupId>
+	<artifactId>monska</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<name>Monska</name>
+	<description>Configuration property server</description>
+
+	<parent>
+		<groupId>de.galan</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.3</version>
+	</parent>
+
+	<!--
+	<scm>
+		<developerConnection>scm:git:ssh://git@github.com/galan/verjson.git</developerConnection>
+		<url>https://github.com/galan/verjson</url>
+	</scm>
+	-->
+
+	<properties>
+		<jdk.compiler.version>1.8</jdk.compiler.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.galan</groupId>
+			<artifactId>commons</artifactId>
+			<version>0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- tests -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>1.6.0</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>
