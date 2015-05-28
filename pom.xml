@@ -2,53 +2,76 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.galan</groupId>
-	<artifactId>monska</artifactId>
-	<version>0.1-SNAPSHOT</version>
-	<name>Monska</name>
-	<description>Configuration property server</description>
+	<artifactId>snake</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Snake</name>
+	<description>(Distributed hierarchically) simple configuration management for services in Java</description>
 
 	<parent>
 		<groupId>de.galan</groupId>
 		<artifactId>parent</artifactId>
-		<version>0.3</version>
+		<version>0.6-SNAPSHOT</version>
 	</parent>
 
 	<!--
 	<scm>
-		<developerConnection>scm:git:ssh://git@github.com/galan/verjson.git</developerConnection>
-		<url>https://github.com/galan/verjson</url>
+		<developerConnection>scm:git:ssh://git@github.com/galan/xxx.git</developerConnection>
+		<url>https://github.com/galan/xxx</url>
 	</scm>
 	-->
 
-	<properties>
-		<jdk.compiler.version>1.8</jdk.compiler.version>
-	</properties>
-
 	<dependencies>
+		<!--  core dependencies -->
 		<dependency>
 			<groupId>de.galan</groupId>
 			<artifactId>commons</artifactId>
-			<version>0.4</version>
+			<version>0.7-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>2.7.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
+
+		<!-- client dependencies -->
 
 
 		<!-- logging -->
 		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+		</dependency>
+
+		<!-- logging bindings:slf4j -->
+		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<optional>true</optional>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+			<!-- logging bindings:jul -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jul</artifactId>
+		</dependency>
+			<!-- logging bindings:jcl -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
+		</dependency>
+			<!-- logging bindings:log4j-1.x -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-1.2-api</artifactId>
 		</dependency>
 
 		<!-- tests -->
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>1.6.0</version>
 			<scope>test</scope>
 		</dependency>
 
