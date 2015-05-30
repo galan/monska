@@ -30,6 +30,41 @@ public class OverlaySnakeModel extends SnakeModel {
 	}
 
 
+	protected void set(String name, Object value, String fallback) {
+		set(name, value == null ? fallback : value.toString());
+	}
+
+
+	@Override
+	public void setInt(String name, Integer value) {
+		set(name, value, null);
+	}
+
+
+	@Override
+	public void setLong(String name, Long value) {
+		set(name, value, null);
+	}
+
+
+	@Override
+	public void setDouble(String name, Double value) {
+		set(name, value, null);
+	}
+
+
+	@Override
+	public void setBool(String name, Boolean value) {
+		set(name, value, Boolean.FALSE.toString());
+	}
+
+
+	@Override
+	public void setTime(String name, String value) {
+		set(name, value);
+	}
+
+
 	@Override
 	public void remove(String name) {
 		overlay.put(name, null);

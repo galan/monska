@@ -18,7 +18,7 @@ import de.galan.snake.util.PropertiesPrinter;
  *
  * @author daniel
  */
-public abstract class SnakeModel {
+public class SnakeModel implements Overlayable {
 
 	private SnakeSource source;
 	private SnakeInstance instance;
@@ -53,13 +53,6 @@ public abstract class SnakeModel {
 	public boolean isSet(String name) {
 		return isNotBlank(get(name));
 	}
-
-
-	/** Set the property with the given name to the specific value. */
-	public abstract void set(String name, String value);
-
-
-	public abstract void remove(String name);
 
 
 	public Integer getInt(String name) {
