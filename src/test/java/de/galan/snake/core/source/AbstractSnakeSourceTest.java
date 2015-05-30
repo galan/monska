@@ -45,7 +45,7 @@ public class AbstractSnakeSourceTest extends AbstractTestParent {
 		assertThat(listener.listAdded).hasSize(2);
 		assertThat(listener.listRemoved).hasSize(0);
 		assertThat(listener.listUpdated).hasSize(0);
-		assertThat(listener.refreshed).isEqualTo(0);
+		assertThat(listener.refreshed).isEqualTo(1);
 		assertThat(listener.listAdded).containsOnly(new EventBean("aaa", "111"), new EventBean("bbb", "222"));
 	}
 
@@ -62,10 +62,10 @@ public class AbstractSnakeSourceTest extends AbstractTestParent {
 		assertThat(listener.listAdded).hasSize(1);
 		assertThat(listener.listRemoved).hasSize(1);
 		assertThat(listener.listUpdated).hasSize(1);
-		assertThat(listener.refreshed).isEqualTo(0);
+		assertThat(listener.refreshed).isEqualTo(1);
 		assertThat(listener.listAdded).containsOnly(new EventBean("ccc", "444"));
 		assertThat(listener.listRemoved).containsOnly(new EventBean("aaa", "111"));
-		assertThat(listener.listUpdated).containsOnly(new UpdatedBean("ccc", "333", "222"));
+		assertThat(listener.listUpdated).containsOnly(new UpdatedBean("bbb", "333", "222"));
 	}
 
 
