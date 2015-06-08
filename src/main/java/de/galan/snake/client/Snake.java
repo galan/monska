@@ -163,4 +163,34 @@ public class Snake {
 		getModel().removeListener(listener);
 	}
 
+
+	public static void overlay(String name, String value) {
+		getModel().set(name, value);
+	}
+
+
+	public static void overlayInt(String name, Integer value) {
+		getModel().setInt(name, value);
+	}
+
+
+	public static void overlayLong(String name, Long value) {
+		getModel().setLong(name, value);
+	}
+
+
+	public static void overlayDouble(String name, Double value) {
+		getModel().setDouble(name, value);
+	}
+
+
+	public static void overlayBool(String name, Boolean value) {
+		getModel().setBool(name, value);
+	}
+
+
+	public static void overlayTime(String name, String value) {
+		getModel().setTime(name, value);
+	}
+
 }

@@ -1,5 +1,7 @@
 package de.galan.snake.core;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.Test;
 
 import de.galan.commons.time.Sleeper;
@@ -17,7 +19,7 @@ public class SmokeTest {
 	@Test
 	public void testName() throws Exception {
 		BootstrapSnake.init();
-		Snake.get("a");
+		assertThat(Snake.get("a")).isNull();
 		Sleeper.sleep("1h");
 	}
 

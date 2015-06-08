@@ -89,7 +89,7 @@ public abstract class AbstractSnakeSource implements SnakeSource {
 			if (notify) {
 				PropertiesPrinter.print(getProperties(), getInstance().getInstance());
 			}
-			Say.info("merged properties"); //TODO set to debug later
+			Say.info("merged properties"); // TODO set to debug later
 		}
 	}
 

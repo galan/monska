@@ -13,7 +13,9 @@ public interface SourceListener {
 	 * @param name The key of the added property
 	 * @param value The new value
 	 */
-	public void addedProperty(String name, String value);
+	default void addedProperty(String name, String value) {
+		// adapter
+	}
 
 
 	/**
@@ -22,7 +24,9 @@ public interface SourceListener {
 	 * @param name The key of the property
 	 * @param oldValue The old value
 	 */
-	public void removedProperty(String name, String oldValue);
+	default void removedProperty(String name, String oldValue) {
+		// adapter
+	}
 
 
 	/**
@@ -32,12 +36,16 @@ public interface SourceListener {
 	 * @param newValue The new value
 	 * @param oldValue The old value
 	 */
-	public void updatedProperty(String name, String newValue, String oldValue);
+	default void updatedProperty(String name, String newValue, String oldValue) {
+		// adapter
+	}
 
 
 	/**
 	 * Properties have been refreshed.
 	 */
-	public void refreshedProperties();
+	default void refreshedProperties() {
+		// adapter
+	}
 
 }
