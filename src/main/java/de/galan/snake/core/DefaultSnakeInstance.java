@@ -1,5 +1,8 @@
 package de.galan.snake.core;
 
+import static org.apache.commons.lang3.StringUtils.*;
+
+
 /**
  * daniel should have written a comment here.
  *
@@ -13,6 +16,20 @@ public class DefaultSnakeInstance implements SnakeInstance {
 	public static final String WORK_DIRECTORY = System.getProperty("user.dir");
 	public static final String DEFAULT_INSTANCE = "instance";
 
+	private String snakeBase;
+	private String snakeInstance;
+
+
+	public DefaultSnakeInstance() {
+		this(null, null);
+	}
+
+
+	public DefaultSnakeInstance(String directoryBase, String instance) {
+		snakeBase = defaultString(directoryBase, System.getProperty(SNAKE_BASE, WORK_DIRECTORY));
+		snakeInstance = defaultString(instance, System.getProperty(SNAKE_INSTANCE, DEFAULT_INSTANCE));
+	}
+
 
 	/**
 	 * The base directory which is used in conjunction with the instance name.
@@ -21,7 +38,7 @@ public class DefaultSnakeInstance implements SnakeInstance {
 	 */
 	@Override
 	public String getDirectoryBase() {
-		return System.getProperty(SNAKE_BASE, WORK_DIRECTORY);
+		return snakeBase;
 	}
 
 
@@ -33,7 +50,7 @@ public class DefaultSnakeInstance implements SnakeInstance {
 	 */
 	@Override
 	public String getInstance() {
-		return System.getProperty(SNAKE_INSTANCE, DEFAULT_INSTANCE);
+		return snakeInstance;
 	}
 
 }

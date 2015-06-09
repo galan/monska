@@ -18,7 +18,7 @@ public class SmokeTest {
 
 	@Test
 	public void testName() throws Exception {
-		BootstrapSnake.init();
+		BootstrapSnake.initWithDefaults();
 		assertThat(Snake.get("a")).isNull();
 		Sleeper.sleep("1h");
 	}
