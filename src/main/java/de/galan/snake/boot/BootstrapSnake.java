@@ -25,17 +25,19 @@ import de.galan.snake.management.SnakeManagement;
 
 
 /**
- * Simple predefined standard bootstrapping for Snake.
+ * Simplified initialization for Snake using predefined builder.
  *
  * @author daniel
  */
 public class BootstrapSnake {
 
+	/** Create builder to set initialization parameter. */
 	public static BootstrapBuilder build() {
 		return new BootstrapBuilder();
 	}
 
 
+	/** Initialize Snake using the default initialization parameter and nothing else. */
 	public static void initWithDefaults() {
 		build().init();
 	}
@@ -46,10 +48,17 @@ public class BootstrapSnake {
 		private String builderBase;
 		private String builderInstance;
 		private String builderSource;
+		private boolean builderLogging;
 
 
 		public BootstrapBuilder createDirectories(boolean create) {
 			builderDirectories = create;
+			return this;
+		}
+
+
+		public BootstrapBuilder setupLogging(boolean logging) {
+			builderLogging = logging;
 			return this;
 		}
 
@@ -98,7 +107,9 @@ public class BootstrapSnake {
 				if (builderDirectories) {
 					createDirectories(instance);
 				}
-				new BootstrapLogger().initializeLogger(instance.getDirectoryConfiguration() + BootstrapLogger.LOG4J2_XML);
+				if (builderLogging) {
+					new BootstrapLogger().initializeLogger(instance.getDirectoryConfiguration() + BootstrapLogger.LOG4J2_XML);
+				}
 
 				try {
 					SnakeSource source = createSource();
