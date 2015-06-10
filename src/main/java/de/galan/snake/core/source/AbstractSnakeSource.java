@@ -83,7 +83,7 @@ public abstract class AbstractSnakeSource implements SnakeSource {
 			properties = ImmutableMap.copyOf(propertiesNew);
 
 			// notify listener afterwards
-			consumers.forEach(this::notifyListener); // TODO async?
+			consumers.forEach(this::notifyListener);
 
 			// log overview of the new properties
 			if (notify) {

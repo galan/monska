@@ -6,7 +6,8 @@ import java.util.Map.Entry;
 
 
 /**
- * daniel should have written a comment here.
+ * Ability to hide/cover existing properties at runtime. Overlayed properties are transient and not persisted. They are
+ * perfectly suited for testing.
  *
  * @author daniel
  */

@@ -51,8 +51,8 @@ public class BootstrapSnake {
 		private boolean builderLogging;
 
 
-		public BootstrapBuilder createDirectories(boolean create) {
-			builderDirectories = create;
+		public BootstrapBuilder setupDirectories(boolean directories) {
+			builderDirectories = directories;
 			return this;
 		}
 
@@ -98,11 +98,11 @@ public class BootstrapSnake {
 				// other configuration-files or systems can benefit by substitute them (such as log4j2.xml)
 				System.setProperty(DefaultSnakeInstance.SNAKE_BASE, instance.getDirectoryBase());
 				System.setProperty(DefaultSnakeInstance.SNAKE_INSTANCE, instance.getInstance());
-				System.setProperty("snake.dir.configuration", instance.getDirectoryConfiguration());
-				System.setProperty("snake.dir.log", instance.getDirectoryLog());
-				System.setProperty("snake.dir.script", instance.getDirectoryScript());
-				System.setProperty("snake.dir.storage", instance.getDirectoryStorage());
-				System.setProperty("snake.dir.temp", instance.getDirectoryTemp());
+				System.setProperty(DefaultSnakeInstance.SNAKE_DIR_CONFIGURATION, instance.getDirectoryConfiguration());
+				System.setProperty(DefaultSnakeInstance.SNAKE_DIR_LOG, instance.getDirectoryLog());
+				System.setProperty(DefaultSnakeInstance.SNAKE_DIR_SCRIPT, instance.getDirectoryScript());
+				System.setProperty(DefaultSnakeInstance.SNAKE_DIR_STORAGE, instance.getDirectoryStorage());
+				System.setProperty(DefaultSnakeInstance.SNAKE_DIR_TEMP, instance.getDirectoryTemp());
 
 				if (builderDirectories) {
 					createDirectories(instance);

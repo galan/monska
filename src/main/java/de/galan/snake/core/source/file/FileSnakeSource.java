@@ -39,7 +39,7 @@ public class FileSnakeSource extends AbstractSnakeSource {
 			try {
 				//FilePropertySupplier fileSupplier = new FilePropertySupplier(fileInstance, fileUser);
 				//RefreshPropertiesListener listener = new RefreshPropertiesListener(access, fileSupplier);
-				RefreshPropertiesListenerNew listener = new RefreshPropertiesListenerNew();
+				PropertiesFileListener listener = new PropertiesFileListener();
 				FilesystemObserver observer = new FilesystemObserver();
 				observer.registerFileListener(listener, fileInstance);
 				observer.registerFileListener(listener, fileUser);
@@ -95,7 +95,7 @@ public class FileSnakeSource extends AbstractSnakeSource {
 	}
 
 	/** Notification on changes for a file */
-	private class RefreshPropertiesListenerNew implements FileListener {
+	private class PropertiesFileListener implements FileListener {
 
 		@Override
 		public void notifyFileCreated(File file) {
