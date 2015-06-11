@@ -6,7 +6,7 @@ import static org.apache.commons.lang3.StringUtils.*;
 /**
  * daniel should have written a comment here.
  *
- * @author daniel
+ * @author galan
  */
 public class DefaultSnakeInstance implements SnakeInstance {
 

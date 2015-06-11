@@ -3,7 +3,7 @@ package de.galan.snake.management;
 /**
  * Simple ManagementBean for Snake, might be improved when required
  *
- * @author daniel
+ * @author galan
  */
 public interface SnakeManagementMBean {
 

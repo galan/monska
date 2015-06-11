@@ -3,7 +3,7 @@ package de.galan.snake.core;
 /**
  * Notifies about changes in the properties
  *
- * @author daniel
+ * @author galan
  */
 public interface SourceListener {
 

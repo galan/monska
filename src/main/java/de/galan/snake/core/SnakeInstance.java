@@ -3,7 +3,7 @@ package de.galan.snake.core;
 /**
  * daniel should have written a comment here.
  *
- * @author daniel
+ * @author galan
  */
 public interface SnakeInstance {
 

@@ -13,7 +13,7 @@ import de.galan.snake.client.Snake;
 /**
  * ManagementBean for Snake for introspection using JMX.
  *
- * @author daniel
+ * @author galan
  */
 public class SnakeManagement implements SnakeManagementMBean {
 

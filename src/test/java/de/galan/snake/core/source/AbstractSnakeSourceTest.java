@@ -18,7 +18,7 @@ import de.galan.snake.core.SourceListener;
 /**
  * CUT AbstractSnakeSource
  *
- * @author daniel
+ * @author galan
  */
 public class AbstractSnakeSourceTest extends AbstractTestParent {
 

@@ -10,7 +10,7 @@ import de.galan.snake.core.SourceListener;
 /**
  * Static facade to access snake configuration properties within clients.
  *
- * @author daniel
+ * @author galan
  */
 public class Snake {
 

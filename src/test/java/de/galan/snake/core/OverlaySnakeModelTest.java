@@ -12,7 +12,7 @@ import de.galan.snake.test.TestSnakeSource;
 /**
  * CUT OverlaySnakeModel
  *
- * @author daniel
+ * @author galan
  */
 public class OverlaySnakeModelTest extends AbstractTestParent {
 

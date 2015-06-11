@@ -19,7 +19,7 @@ import de.galan.snake.util.PropertiesPrinter;
  * Default behaviour and fields for a source. Implements ready-to-use merging, listeners, properties and SnakeInstance
  * field.
  *
- * @author daniel
+ * @author galan
  */
 public abstract class AbstractSnakeSource implements SnakeSource {
 

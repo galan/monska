@@ -12,7 +12,7 @@ import de.galan.snake.client.Snake;
 /**
  * daniel should have written a comment here.
  *
- * @author daniel
+ * @author galan
  */
 public class SmokeTest {
 

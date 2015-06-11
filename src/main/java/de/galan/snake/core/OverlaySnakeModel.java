@@ -9,7 +9,7 @@ import java.util.Map.Entry;
  * Ability to hide/cover existing properties at runtime. Overlayed properties are transient and not persisted. They are
  * perfectly suited for testing.
  *
- * @author daniel
+ * @author galan
  */
 public class OverlaySnakeModel extends SnakeModel {
 

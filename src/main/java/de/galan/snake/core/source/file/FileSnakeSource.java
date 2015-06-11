@@ -21,7 +21,7 @@ import de.galan.snake.core.source.AbstractSnakeSource;
 /**
  * daniel should have written a comment here.
  *
- * @author daniel
+ * @author galan
  */
 public class FileSnakeSource extends AbstractSnakeSource {
 

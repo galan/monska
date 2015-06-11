@@ -6,7 +6,7 @@ import org.apache.commons.lang3.NotImplementedException;
 /**
  * daniel should have written a comment here.
  *
- * @author daniel
+ * @author galan
  */
 public interface Overlayable {
 

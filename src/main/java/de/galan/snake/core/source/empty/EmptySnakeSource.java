@@ -6,7 +6,7 @@ import de.galan.snake.core.source.AbstractSnakeSource;
 /**
  * Source with no values.
  *
- * @author daniel
+ * @author galan
  */
 public class EmptySnakeSource extends AbstractSnakeSource {
 

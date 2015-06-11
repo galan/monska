@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Contract to deliver configuration-properties.
  *
- * @author daniel
+ * @author galan
  */
 public interface SnakeSource {
 

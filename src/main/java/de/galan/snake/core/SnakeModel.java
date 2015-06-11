@@ -16,7 +16,7 @@ import de.galan.snake.util.PropertiesPrinter;
 /**
  * Provides mapped access to the properties provided by the SnakeSource and SnakeInstance.
  *
- * @author daniel
+ * @author galan
  */
 public class SnakeModel implements Overlayable {
 

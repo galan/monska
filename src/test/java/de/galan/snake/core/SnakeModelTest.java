@@ -12,7 +12,7 @@ import de.galan.snake.test.TestSnakeSource;
 /**
  * CUT SnakeModel
  *
- * @author daniel
+ * @author galan
  */
 public class SnakeModelTest extends AbstractTestParent {
 

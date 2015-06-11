@@ -27,7 +27,7 @@ import de.galan.snake.management.SnakeManagement;
 /**
  * Simplified initialization for Snake using predefined builder.
  *
- * @author daniel
+ * @author galan
  */
 public class BootstrapSnake {
 
