@@ -38,11 +38,16 @@ public class DefaultSnakeInstance implements SnakeInstance {
 	public DefaultSnakeInstance(String directoryBase, String instance) {
 		snakeBase = defaultString(directoryBase, System.getProperty(SNAKE_BASE, WORK_DIRECTORY));
 		snakeInstance = defaultString(instance, System.getProperty(SNAKE_INSTANCE, DEFAULT_INSTANCE));
-		dirConfiguration = System.getProperty(SNAKE_DIR_CONFIGURATION, SnakeInstance.super.getDirectoryConfiguration());
-		dirLog = System.getProperty(SNAKE_DIR_LOG, SnakeInstance.super.getDirectoryLog());
-		dirScript = System.getProperty(SNAKE_DIR_SCRIPT, SnakeInstance.super.getDirectoryScript());
-		dirStorage = System.getProperty(SNAKE_DIR_STORAGE, SnakeInstance.super.getDirectoryStorage());
-		dirTemp = System.getProperty(SNAKE_DIR_TEMP, SnakeInstance.super.getDirectoryTemp());
+		dirConfiguration = postfixPath(System.getProperty(SNAKE_DIR_CONFIGURATION, SnakeInstance.super.getDirectoryConfiguration()));
+		dirLog = postfixPath(System.getProperty(SNAKE_DIR_LOG, SnakeInstance.super.getDirectoryLog()));
+		dirScript = postfixPath(System.getProperty(SNAKE_DIR_SCRIPT, SnakeInstance.super.getDirectoryScript()));
+		dirStorage = postfixPath(System.getProperty(SNAKE_DIR_STORAGE, SnakeInstance.super.getDirectoryStorage()));
+		dirTemp = postfixPath(System.getProperty(SNAKE_DIR_TEMP, SnakeInstance.super.getDirectoryTemp()));
+	}
+
+
+	protected String postfixPath(String path) {
+		return !endsWith(path, FILE_SEPERATOR) ? path + FILE_SEPERATOR : path;
 	}
 
 

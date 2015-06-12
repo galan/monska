@@ -45,10 +45,10 @@ public class FileSnakeSource extends AbstractSnakeSource {
 				observer.registerFileListener(listener, fileUser);
 			}
 			catch (Exception ex) {
-				JvmUtils.terminate().message("Snake failed observing properties-file.").returnCode(2).now();
+				terminate("Snake failed observing properties-file.");
 			}
 		}
-		refresh(true);
+		refresh(false);
 	}
 
 
@@ -83,9 +83,14 @@ public class FileSnakeSource extends AbstractSnakeSource {
 		String defaultFile = instance.getDirectoryConfiguration() + "instance.properties";
 		File result = new File(System.getProperty("snake.source.file.instance", defaultFile));
 		if (!result.exists() || result.isDirectory()) {
-			JvmUtils.terminate().message("No snake instance properties-file exists.\n(searched in " + result + ")").returnCode(2).now();
+			terminate("No snake instance properties-file exists.\n(searched in " + result + ")");
 		}
 		return result;
+	}
+
+
+	protected void terminate(String message) {
+		JvmUtils.terminate().message(message).returnCode(2).now();
 	}
 
 
