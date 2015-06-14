@@ -77,17 +77,15 @@ public abstract class AbstractSnakeSource implements SnakeSource {
 		}
 
 		if (!consumers.isEmpty()) {
-			if (notify) {
-				consumers.add(c -> c.refreshedProperties()); // General notification that properties have been changed
-			}
 			// assign
 			properties = ImmutableMap.copyOf(propertiesNew);
 
 			// log overview of the new properties
 			if (notify) {
+				consumers.add(c -> c.refreshedProperties()); // General notification that properties have been changed
 				consumers.forEach(this::notifyListener); // notify listener afterwards
-				PropertiesPrinter.print(getProperties(), getInstance().getInstance());
 			}
+			PropertiesPrinter.print(getProperties(), getInstance().getInstance());
 			Say.info("merged properties"); // TODO set to debug later
 		}
 	}

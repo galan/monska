@@ -69,7 +69,7 @@ public class OverlaySnakeModelTest extends AbstractTestParent {
 	public void overlayDouble() throws Exception {
 		model = new OverlaySnakeModel(source, null);
 		model.setDouble("xyz", 1234.4567d);
-		assertThat(model.get("xyz")).isEqualTo("12345.4567");
+		assertThat(model.get("xyz")).isEqualTo("1234.4567");
 	}
 
 

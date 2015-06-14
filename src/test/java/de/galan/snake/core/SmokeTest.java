@@ -2,6 +2,7 @@ package de.galan.snake.core;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.galan.commons.time.Sleeper;
@@ -14,6 +15,7 @@ import de.galan.snake.client.Snake;
  *
  * @author galan
  */
+@Ignore
 public class SmokeTest {
 
 	@Test

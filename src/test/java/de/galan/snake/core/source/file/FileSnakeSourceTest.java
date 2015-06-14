@@ -36,6 +36,7 @@ public class FileSnakeSourceTest extends AbstractTestParent {
 
 	@Before
 	public void setup() {
+		System.getProperties().remove(FileSnakeSource.PROPERTY_OBSERVE); // reset
 		userPropertiesFile = StandardSystemProperty.USER_NAME.value() + ".properties";
 		dirTest = Tests.getTestDirectory(true).getAbsolutePath();
 		System.setProperty(DefaultSnakeInstance.SNAKE_DIR_CONFIGURATION, dirTest);
@@ -130,7 +131,6 @@ public class FileSnakeSourceTest extends AbstractTestParent {
 		source.initialize(new DefaultSnakeInstance());
 		remove(userPropertiesFile);
 		Sleeper.sleep("200ms");
-		assertThat(source.getProperties()).containsOnly(entry("aaa", "111"), entry("bbb", "222"));
 
 		assertThat(listener.listAdded).hasSize(0);
 		assertThat(listener.listRemoved).hasSize(1);
@@ -138,6 +138,17 @@ public class FileSnakeSourceTest extends AbstractTestParent {
 		assertThat(listener.refreshed).isEqualTo(1);
 		assertThat(listener.listRemoved).containsOnly(new EventBean("ccc", "444"));
 		assertThat(listener.listUpdated).containsOnly(new UpdatedBean("bbb", "222", "333"));
+	}
+
+
+	@Test
+	public void notObserving() throws Exception {
+		System.setProperty(FileSnakeSource.PROPERTY_OBSERVE, "false");
+		copy("instance.properties", "instance.properties");
+		copy("user.properties", userPropertiesFile);
+		source.initialize(new DefaultSnakeInstance());
+		Sleeper.sleep("200ms");
+
 	}
 
 

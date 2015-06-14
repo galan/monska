@@ -19,11 +19,21 @@ import de.galan.snake.core.source.AbstractSnakeSource;
 
 
 /**
- * daniel should have written a comment here.
+ * Source for properties that come from two watched files, which has to placed in the configuration-directory. First the
+ * properties from the file 'instance.properties' are loaded. The values can be overwritten using a user-specific file
+ * with the name '&lt;username&gt;.properties' (where &lt;username&gt; is replaced with the currently logged in
+ * username).<br/>
+ * Changes in the files will be observed, so that the current properties will be refreshed and reflected in the source
+ * during runtime.
  *
  * @author galan
  */
 public class FileSnakeSource extends AbstractSnakeSource {
+
+	public static final String PROPERTY_OBSERVE = "snake.source.file.observe";
+	public static final String PROPERTY_INSTANCEFILE = "snake.source.file.instance";
+	public static final String PROPERTY_USERFILE = "snake.source.file.user";
+	public static final String PROPERTY_TRACK_ANY_CHANGE = "snake.source.file.trackAnyChange";
 
 	private File fileInstance;
 	private File fileUser;
@@ -34,7 +44,7 @@ public class FileSnakeSource extends AbstractSnakeSource {
 		super.initialize(instance);
 		fileInstance = determineInstanceFile(getInstance());
 		fileUser = determineUserFile(getInstance());
-		boolean observe = "true".equals(System.getProperty("snake.source.file.observe", "true"));
+		boolean observe = "true".equals(System.getProperty(PROPERTY_OBSERVE, "true"));
 		if (observe) {
 			try {
 				//FilePropertySupplier fileSupplier = new FilePropertySupplier(fileInstance, fileUser);
@@ -81,7 +91,7 @@ public class FileSnakeSource extends AbstractSnakeSource {
 
 	protected File determineInstanceFile(SnakeInstance instance) {
 		String defaultFile = instance.getDirectoryConfiguration() + "instance.properties";
-		File result = new File(System.getProperty("snake.source.file.instance", defaultFile));
+		File result = new File(System.getProperty(PROPERTY_INSTANCEFILE, defaultFile));
 		if (!result.exists() || result.isDirectory()) {
 			terminate("No snake instance properties-file exists.\n(searched in " + result + ")");
 		}
@@ -96,7 +106,7 @@ public class FileSnakeSource extends AbstractSnakeSource {
 
 	protected File determineUserFile(SnakeInstance instance) {
 		String defaultFile = instance.getDirectoryConfiguration() + StandardSystemProperty.USER_NAME.value() + ".properties";
-		return new File(System.getProperty("snake.source.file.user", defaultFile));
+		return new File(System.getProperty(PROPERTY_USERFILE, defaultFile));
 	}
 
 	/** Notification on changes for a file */
@@ -126,7 +136,7 @@ public class FileSnakeSource extends AbstractSnakeSource {
 
 		// http://stackoverflow.com/questions/607435/why-does-vim-save-files-with-a-extension
 		protected boolean isTrackingAll() {
-			String modificationsOnly = System.getProperty("snake.source.file.trackAnyChange", "true");
+			String modificationsOnly = System.getProperty(PROPERTY_TRACK_ANY_CHANGE, "true");
 			return "true".equals(modificationsOnly);
 		}
 
