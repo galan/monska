@@ -40,14 +40,7 @@ public class FileSnakeSourceTest extends AbstractTestParent {
 		userPropertiesFile = StandardSystemProperty.USER_NAME.value() + ".properties";
 		dirTest = Tests.getTestDirectory(true).getAbsolutePath();
 		System.setProperty(DefaultSnakeInstance.SNAKE_DIR_CONFIGURATION, dirTest);
-		source = new FileSnakeSource() {
-
-			@Override
-			protected void terminate(String message) {
-				throw new RuntimeException(message);
-			}
-
-		};
+		source = new FileSnakeSource();
 		listener = new TestSourceListener();
 		source.addListener(listener);
 	}

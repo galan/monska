@@ -20,7 +20,7 @@ public class SmokeTest {
 
 	@Test
 	public void testName() throws Exception {
-		BootstrapSnake.initWithDefaults();
+		BootstrapSnake.build().source("zookeeper").init();
 		assertThat(Snake.get("a")).isNull();
 		Sleeper.sleep("1h");
 	}

@@ -13,7 +13,6 @@ import com.google.common.base.StandardSystemProperty;
 import de.galan.commons.io.file.FileListener;
 import de.galan.commons.io.file.FilesystemObserver;
 import de.galan.commons.logging.Say;
-import de.galan.commons.util.JvmUtils;
 import de.galan.snake.core.SnakeInstance;
 import de.galan.snake.core.source.AbstractSnakeSource;
 
@@ -55,7 +54,7 @@ public class FileSnakeSource extends AbstractSnakeSource {
 				observer.registerFileListener(listener, fileUser);
 			}
 			catch (Exception ex) {
-				terminate("Snake failed observing properties-file.");
+				throw new RuntimeException("Snake failed observing properties-file.");
 			}
 		}
 		refresh(false);
@@ -93,14 +92,9 @@ public class FileSnakeSource extends AbstractSnakeSource {
 		String defaultFile = instance.getDirectoryConfiguration() + "instance.properties";
 		File result = new File(System.getProperty(PROPERTY_INSTANCEFILE, defaultFile));
 		if (!result.exists() || result.isDirectory()) {
-			terminate("No snake instance properties-file exists.\n(searched in " + result + ")");
+			throw new RuntimeException("No snake instance properties-file exists.\n(searched in " + result + ")");
 		}
 		return result;
-	}
-
-
-	protected void terminate(String message) {
-		JvmUtils.terminate().message(message).returnCode(2).now();
 	}
 
 

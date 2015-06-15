@@ -45,10 +45,10 @@ public class BootstrapSnake {
 	public static class BootstrapBuilder {
 
 		private boolean builderDirectories = true;
+		private boolean builderLogging = true;
 		private String builderBase;
 		private String builderInstance;
 		private String builderSource;
-		private boolean builderLogging;
 
 
 		public BootstrapBuilder setupDirectories(boolean directories) {
@@ -135,7 +135,7 @@ public class BootstrapSnake {
 		protected SnakeSource createSource() {
 			SnakeSource result = null;
 			String source = defaultString(builderSource, System.getProperty("snake.source", "file"));
-			if (StringUtils.equals(source, "zk")) {
+			if (StringUtils.equals(source, "zk") || StringUtils.equals(source, "zookeeper")) {
 				result = new ZookeeperSnakeSource();
 			}
 			else if (StringUtils.equals(source, "file")) {
