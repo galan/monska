@@ -1,5 +1,7 @@
 package de.galan.snake.core.source.zookeeper;
 
+import static org.apache.commons.lang3.StringUtils.*;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class ZookeeperSnakeSource extends AbstractSnakeSource {
 	private static final String SEPARATOR = "/";
 	public static final String PROPERTY_CONNECTION = "snake.source.zk.connection";
 	public static final String PROPERTY_RETRY_SLEEP = "snake.source.zk.retrySleep";
-	private static final String PROPERTY_PATH = "snake.source.zk.path";
+	public static final String PROPERTY_PATH = "snake.source.zk.path";
 	private static final String NAMESPACE = "snake";
 
 	private CuratorFramework client;
@@ -64,7 +66,7 @@ public class ZookeeperSnakeSource extends AbstractSnakeSource {
 
 
 	protected String getPath() {
-		return path;
+		return SEPARATOR + NAMESPACE + SEPARATOR + path;
 	}
 
 
@@ -79,11 +81,16 @@ public class ZookeeperSnakeSource extends AbstractSnakeSource {
 
 
 	protected void readProperties() throws Exception {
-		List<String> nodes = Splitter.on(SEPARATOR).omitEmptyStrings().trimResults().splitToList(NAMESPACE + SEPARATOR + getPath());
+		List<String> nodes = Splitter.on(SEPARATOR).omitEmptyStrings().trimResults().splitToList(getPath());
 		StringBuilder currentPath = new StringBuilder();
 		for (String node: nodes) {
 			currentPath.append(SEPARATOR).append(node);
-			NodeCache cache = new NodeCache(client, currentPath.toString());
+			// create path (will be created when starting the caches anyway, except the last part). If doing afterwards, recalculation might be retriggered
+			String currentPathString = currentPath.toString();
+			if (getClient().checkExists().forPath(currentPathString) == null) {
+				getClient().create().forPath(currentPathString, EMPTY.getBytes(Charsets.UTF_8));
+			}
+			NodeCache cache = new NodeCache(client, currentPathString);
 			getCaches().add(cache);
 			cache.getListenable().addListener(() -> recalculateProperties(true));
 			cache.start(true);
