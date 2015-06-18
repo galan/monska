@@ -13,6 +13,7 @@ import org.apache.curator.retry.RetryOneTime;
 import org.apache.curator.test.TestingServer;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.base.Charsets;
@@ -116,6 +117,15 @@ public class ZookeeperSnakeSourceTest extends AbstractTestParent {
 		client.setData().forPath("/snake/my/path", "a=2".getBytes(Charsets.UTF_8));
 		Sleeper.sleep("200ms");
 		assertThat(source.getProperties().get("a")).isEqualTo("2");
+	}
+
+
+	@Test
+	@Ignore
+	public void invalidData() throws Exception {
+		startZookeeper();
+		client.create().forPath("/snake", "what makes an invalid property?".getBytes(Charsets.UTF_8));
+		source.initialize(new DefaultSnakeInstance());
 	}
 
 }
