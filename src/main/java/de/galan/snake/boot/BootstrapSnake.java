@@ -10,8 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import de.galan.commons.logging.BootstrapLogger;
 import de.galan.commons.logging.Say;
-import de.galan.commons.util.JvmUtils;
-import de.galan.commons.util.MBeanUtil;
+import de.galan.commons.util.JmxUtil;
+import de.galan.commons.util.JvmUtil;
 import de.galan.snake.client.Snake;
 import de.galan.snake.core.DefaultSnakeInstance;
 import de.galan.snake.core.OverlaySnakeModel;
@@ -119,9 +119,9 @@ public class BootstrapSnake {
 				}
 				catch (Throwable t) {
 					Say.error("Failed initializing Snake", t);
-					JvmUtils.terminate().message("Failed initializing Snake: " + t.getMessage()).returnCode(1).now();
+					JvmUtil.terminate().message("Failed initializing Snake: " + t.getMessage()).returnCode(1).now();
 				}
-				MBeanUtil.registerMBean("de.galan", "snake", "Snake", new SnakeManagement());
+				JmxUtil.registerMBean("de.galan", "snake", "Snake", new SnakeManagement());
 			}
 		}
 
@@ -154,7 +154,7 @@ public class BootstrapSnake {
 		protected void createDirectories(SnakeInstance instance) {
 			File dirBase = new File(instance.getDirectoryBase());
 			if (!dirBase.isDirectory() || !dirBase.exists() || !dirBase.canExecute() || !dirBase.canWrite()) {
-				JvmUtils.terminate().message("Instance-directory not available to write {" + dirBase + "}").now();
+				JvmUtil.terminate().message("Instance-directory not available to write {" + dirBase + "}").now();
 			}
 			createDirectory(instance.getDirectoryConfiguration());
 			createDirectory(instance.getDirectoryLog());
@@ -169,7 +169,7 @@ public class BootstrapSnake {
 				FileUtils.forceMkdir(new File(directory));
 			}
 			catch (IOException ex) {
-				JvmUtils.terminate().message("Unable to create directory {" + directory + "}").now();
+				JvmUtil.terminate().message("Unable to create directory {" + directory + "}").now();
 			}
 		}
 	}

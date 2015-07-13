@@ -21,7 +21,7 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 
 import de.galan.commons.logging.Say;
-import de.galan.commons.time.HumanTime;
+import de.galan.commons.time.Durations;
 import de.galan.snake.core.SnakeInstance;
 import de.galan.snake.core.source.AbstractSnakeSource;
 
@@ -51,7 +51,7 @@ public class ZookeeperSnakeSource extends AbstractSnakeSource {
 		caches = new ArrayList<>();
 		String connection = System.getProperty(PROPERTY_CONNECTION, "localhost");
 		String retrySleep = System.getProperty(PROPERTY_RETRY_SLEEP, "4s");
-		RetryNTimes retry = new RetryNTimes(Integer.MAX_VALUE, HumanTime.dehumanizeTime(retrySleep).intValue());
+		RetryNTimes retry = new RetryNTimes(Integer.MAX_VALUE, Durations.dehumanize(retrySleep).intValue());
 		//.namespace(NAMESPACE)
 		client = CuratorFrameworkFactory.builder().connectString(connection).canBeReadOnly(true).retryPolicy(retry).build(); // TODO create more intervention possiblities
 		client.start();

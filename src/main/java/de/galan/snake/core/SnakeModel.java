@@ -9,7 +9,7 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 
 import de.galan.commons.logging.Say;
-import de.galan.commons.time.HumanTime;
+import de.galan.commons.time.Durations;
 import de.galan.snake.util.PropertiesPrinter;
 
 
@@ -140,9 +140,9 @@ public class SnakeModel implements Overlayable {
 
 	public Long getTime(String name, String fallback) {
 		String value = get(name);
-		Long result = HumanTime.dehumanizeTime(value);
+		Long result = Durations.dehumanize(value);
 		if (result == null) {
-			result = HumanTime.dehumanizeTime(fallback);
+			result = Durations.dehumanize(fallback);
 		}
 		return result;
 	}
