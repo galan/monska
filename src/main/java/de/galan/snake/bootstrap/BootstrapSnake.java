@@ -1,4 +1,4 @@
-package de.galan.snake.boot;
+package de.galan.snake.bootstrap;
 
 import static org.apache.commons.lang3.StringUtils.*;
 
@@ -42,6 +42,7 @@ public class BootstrapSnake {
 		build().init();
 	}
 
+	/** Fluent initialization of snake */
 	public static class BootstrapBuilder {
 
 		private boolean builderDirectories = true;
@@ -90,7 +91,7 @@ public class BootstrapSnake {
 		public void init() {
 			synchronized (BootstrapSnake.class) {
 				if (Snake.getModel() != null) {
-					Say.warn("Snake has been initialized already, doing nothing");
+					Say.info("Snake has been initialized already, skipping...");
 					return;
 				}
 				SnakeInstance instance = createInstance();
