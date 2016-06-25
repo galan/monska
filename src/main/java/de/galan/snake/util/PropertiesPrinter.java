@@ -12,8 +12,6 @@ import de.galan.commons.util.MessageBox;
 
 /**
  * Prints the given properties to the log
- *
- * @author galan
  */
 public class PropertiesPrinter {
 
